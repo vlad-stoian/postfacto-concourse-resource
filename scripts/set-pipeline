@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+fly -t rabbit set-pipeline -p test-postfacto-resource -c "$HOME/workspace/postfacto-concourse-resource/ci/pipeline.yml"

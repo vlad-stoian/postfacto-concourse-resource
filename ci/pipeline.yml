@@ -1,0 +1,36 @@
+---
+resource_types:
+- name: postfacto-resource
+  type: docker-image
+  source:
+    repository: vstoian/postfacto-concourse-resource
+    tag: latest
+
+resources:
+- name: pcf-rabbitmq-retro
+  type: postfacto-resource
+  source:
+    random: var
+
+jobs:
+- name: test-postfacto-resource
+  plan:
+  - get: pcf-rabbitmq-retro
+    trigger: true
+  - task: test-it
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: ubuntu
+      inputs:
+      - name: pcf-rabbitmq-retro
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          echo "Starting test"
+          ls -alh pcf-rabbitmq-retro/
+
