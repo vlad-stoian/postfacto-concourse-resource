@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker build . -t vstoian/postfacto-concourse-resource:latest
+
+docker push vstoian/postfacto-concourse-resource:latest
+
+fly -t rabbit check-resource -r test-postfacto-resource/pcf-rabbitmq-retro

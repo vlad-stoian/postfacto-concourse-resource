@@ -5,7 +5,7 @@ WORKDIR /go/src/github.com/vlad-stoian/postfacto-concourse-resource/
 
 ADD . .
 
-RUN GOOS=linux GOARCH=amd64 go build --ldflags '-linkmode "external" -extldflags "-static"' -o /go/bin/check cmd/check/main.go
+RUN GOOS=linux GOARCH=amd64 go build -o /go/bin/check cmd/check/main.go
 
 # Run image
 FROM concourse/buildroot:git
