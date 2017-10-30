@@ -10,7 +10,8 @@ resources:
 - name: pcf-rabbitmq-retro
   type: postfacto-resource
   source:
-    random: var
+    id: "228"
+    password: vale12hamster
 
 jobs:
 - name: test-postfacto-resource

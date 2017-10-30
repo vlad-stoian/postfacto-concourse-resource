@@ -11,6 +11,8 @@ import (
 
 	"io/ioutil"
 
+	"sort"
+
 	"github.com/mitchellh/colorstring"
 )
 
@@ -22,9 +24,8 @@ type CheckRequest struct {
 type CheckResponse []Version
 
 type Version struct {
-	ActionItemDate string      `json:"action_item_date,omitempty"`
-	ActionItemID   string      `json:"action_item_id,omitempty"`
-	Metadata       interface{} `json:"metadata"`
+	ActionItemDate string `json:"action_item_date,omitempty"`
+	ActionItemID   string `json:"action_item_id,omitempty"`
 }
 
 type Source struct {
@@ -122,23 +123,42 @@ func main() {
 	var request CheckRequest
 
 	if err := json.NewDecoder(os.Stdin).Decode(&request); err != nil {
-		Fatal("reading request from stdin", err)
+		Fatal("reading request from STDIN", err)
 	}
 
 	token := GetToken(request.Source.ID, request.Source.Password)
-	retroBoard := GetRetroBoard(request.Source.ID, token)
+	retro := GetRetroBoard(request.Source.ID, token)
 
-	lastActionItem := retroBoard.Board.ActionItems[len(retroBoard.Board.ActionItems)-1]
+	actionItems := retro.Board.ActionItems
 
 	var response CheckResponse
-	response = append(response, Version{
-		ActionItemDate: lastActionItem.CreatedAt,
-		ActionItemID:   fmt.Sprintf("%d", lastActionItem.ID),
-		Metadata:       lastActionItem,
+
+	sort.Slice(actionItems, func(i, j int) bool {
+		return actionItems[i].CreatedAt < actionItems[j].CreatedAt
 	})
 
+	if request.Version.ActionItemDate != "" {
+		for _, actionItem := range actionItems {
+			if actionItem.CreatedAt < request.Version.ActionItemDate {
+				continue
+			}
+
+			response = append(response, Version{
+				ActionItemDate: actionItem.CreatedAt,
+				ActionItemID:   fmt.Sprintf("%d", actionItem.ID),
+			})
+
+		}
+	} else {
+		lastActionItem := retro.Board.ActionItems[len(retro.Board.ActionItems)-1]
+		response = append(response, Version{
+			ActionItemDate: lastActionItem.CreatedAt,
+			ActionItemID:   fmt.Sprintf("%d", lastActionItem.ID),
+		})
+	}
+
 	if err := json.NewEncoder(os.Stdout).Encode(response); err != nil {
-		Fatal("writing response to stdout", err)
+		Fatal("writing response to STDOUT", err)
 	}
 
 }

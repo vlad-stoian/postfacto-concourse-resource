@@ -3,13 +3,145 @@
 
 [[projects]]
   branch = "master"
+  name = "code.cloudfoundry.org/garden"
+  packages = [".","client","client/connection","routes","transport"]
+  revision = "b2dfd6fe164a582c2b1c9dbdd2781d123d2622b4"
+
+[[projects]]
+  branch = "master"
+  name = "code.cloudfoundry.org/lager"
+  packages = ["."]
+  revision = "0bfa98e49e7a976af91e918d47978f07c00b081f"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/bmizerany/pat"
+  packages = ["."]
+  revision = "6226ea591a40176dd3ff9cd8eff81ed6ca721a00"
+
+[[projects]]
+  name = "github.com/cenkalti/backoff"
+  packages = ["."]
+  revision = "61153c768f31ee5f130071d08fc82b85208528de"
+  version = "v1.1.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/charlievieth/fs"
+  packages = ["testdata"]
+  revision = "7dc373669fa10ddf827c37c595dee30a2f001be9"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/concourse/atc"
+  packages = [".","cessna"]
+  revision = "750c42a630d8fc35dc58053993a53e0cbe8e2de9"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/concourse/baggageclaim"
+  packages = [".","api","client","uidgid","volume"]
+  revision = "c235a04d6b5b4455f3bcbd7775d8c17cbfbe1796"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/concourse/go-archive"
+  packages = ["tarfs"]
+  revision = "ab356b5d30a699978c6c19627f33087821226628"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/concourse/retryhttp"
+  packages = ["."]
+  revision = "937335fd9545a4159372c6ef51d6f22f0143d666"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/hashicorp/errwrap"
+  packages = ["."]
+  revision = "7554cd9344cec97297fa6649b055a8c98c2a1e55"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/hashicorp/go-multierror"
+  packages = ["."]
+  revision = "83588e72410abfbe4df460eeb6f30841ae47d4c4"
+
+[[projects]]
+  name = "github.com/jessevdk/go-flags"
+  packages = ["."]
+  revision = "96dc06278ce32a0e9d957d590bb987c81ee66407"
+  version = "v1.3.0"
+
+[[projects]]
+  branch = "master"
   name = "github.com/mitchellh/colorstring"
   packages = ["."]
   revision = "8631ce90f28644f54aeedcb3e389a85174e067d1"
 
+[[projects]]
+  branch = "master"
+  name = "github.com/mitchellh/mapstructure"
+  packages = ["."]
+  revision = "06020f85339e21b2478f756a78e295255ffa4d6a"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/nu7hatch/gouuid"
+  packages = ["."]
+  revision = "179d4d0c4d8d407a32af483c2354df1d2c91e6c3"
+
+[[projects]]
+  name = "github.com/onsi/ginkgo"
+  packages = [".","config","internal/codelocation","internal/containernode","internal/failer","internal/leafnodes","internal/remote","internal/spec","internal/spec_iterator","internal/specrunner","internal/suite","internal/testingtproxy","internal/writer","reporters","reporters/stenographer","reporters/stenographer/support/go-colorable","reporters/stenographer/support/go-isatty","types"]
+  revision = "9eda700730cba42af70d53180f9dcce9266bc2bc"
+  version = "v1.4.0"
+
+[[projects]]
+  name = "github.com/onsi/gomega"
+  packages = [".","format","gbytes","gexec","internal/assertion","internal/asyncassertion","internal/oraclematcher","internal/testingtsupport","matchers","matchers/support/goraph/bipartitegraph","matchers/support/goraph/edge","matchers/support/goraph/node","matchers/support/goraph/util","types"]
+  revision = "c893efa28eb45626cdaa76c9f653b62488858837"
+  version = "v1.2.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/tedsuo/ifrit"
+  packages = ["."]
+  revision = "d787ed1df88a79d9e9b1072738a40500b8ec22ee"
+
+[[projects]]
+  name = "github.com/tedsuo/rata"
+  packages = ["."]
+  revision = "0649c23705dfb45a9693b668c4fc1c0666f485d9"
+  version = "v1.0.0"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = ["context","html","html/atom","html/charset"]
+  revision = "c73622c77280266305273cb545f54516ced95b93"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/sys"
+  packages = ["unix"]
+  revision = "661970f62f5897bc0cd5fdca7e087ba8a98a8fa1"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/text"
+  packages = ["encoding","encoding/charmap","encoding/htmlindex","encoding/internal","encoding/internal/identifier","encoding/japanese","encoding/korean","encoding/simplifiedchinese","encoding/traditionalchinese","encoding/unicode","internal/gen","internal/tag","internal/utf8internal","language","runes","transform","unicode/cldr"]
+  revision = "6eab0e8f74e86c598ec3b6fad4888e0c11482d48"
+
+[[projects]]
+  branch = "v2"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  revision = "eb3733d160e74a9c7e442f435eb3bea458e1d19f"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6255591afef03d907c52abb789aeacaa47c7b88682fa6cf982ac443e8c21c730"
+  inputs-digest = "bc80af9ca36dbd6beec0d8e7be93044250290f4e52c42c4b1518527891e48ab4"
   solver-name = "gps-cdcl"
   solver-version = 1
